@@ -1,5 +1,4 @@
 "use strict";
-
 // let number = 5;
 // const leftBorderWidth = 1;
 
@@ -24,22 +23,62 @@
 // const answer = prompt('Вам є 18?', '18');
 // console.log(answer);
 
-const numberOfFilms = +prompt('How many films you watch?', '');
+const numberOfFilms = +prompt("How many films you watch?", "");
 
 const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
+  count: numberOfFilms,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
 };
 
-const a = prompt('Один з останніх фільмів?', ''),
-      b = prompt('Оцінка йому?', ''),
-      c = prompt('Один з останніх фільмів?', ''),
-      d= prompt('Оцінка йому?', '');
+for (let i = 0; i < 2; i++) {
+  const a = prompt("Один з останніх фільмів?", ""),
+        b = prompt("Оцінка йому?", "");
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+        if(a !=null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('done');
+        } else {
+            i--;
+        }
+}
+
+if (personalMovieDB.count < 10) {
+    console.log('beginner');
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log('meddle');
+} else if (personalMovieDB.count >= 30) {
+    console.log ('senior');
+} else {
+    console.log('error');
+}
 
 console.log(personalMovieDB);
+
+//оператор
+// if (4 == 4) {
+//     console.log('Ok!');
+// }
+
+// let num = 50;
+//цикли
+// while (num <= 55) {
+//     console.log(num);
+//     num++;
+// }
+
+// do{
+//     console.log(num);
+//     num++;
+// }
+// while (num < 55);
+
+// for(let i =1; i < 8; i++) {
+//     if(i === 6) {
+//         continue;
+//     }
+
+//     console.log(i);
+// }
