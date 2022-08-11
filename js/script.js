@@ -24,72 +24,77 @@
 // console.log(answer);
 
 //Практика
-// let numberOfFilms;
 
-// function start() {
-//   numberOfFilms = +prompt("How many films you watch?", "");
 
-//   while (numberOfFilms == "" || numberOfFilms == null || isNaN(numberOfFilms)) {
-//     numberOfFilms = +prompt("How many films you watch?", "");
-//   }
-// }
-// start();
+const personalMovieDB = {
+  count: 0,
+  movies: {},
+  actors: {},
+  genres: [],
+  privat: false,
+  start: () => {
+    personalMovieDB.count = +prompt("How many films you watch?", "");
+  
+    while (personalMovieDB.count == "" || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
+        personalMovieDB.count = +prompt("How many films you watch?", "");
+    }
+  },
+  rememberMyFilms: () => {
+    for (let i = 0; i < 2; i++) {
+      const a = prompt("Один з останніх фільмів?", ""),
+        b = prompt("Оцінка йому?", "");
+  
+      if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+        console.log("done");
+      } else {
+        i--;
+      }
+    }
+  },
+  detectPersonalLevel: () => {
+    if (personalMovieDB.count < 10) {
+      console.log("beginner");
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+      console.log("meddle");
+    } else if (personalMovieDB.count >= 30) {
+      console.log("senior");
+    } else {
+      console.log("error");
+    }
+  },
+  showMyDB: (hidden) => {
+    if (!hidden) {
+      console.log(personalMovieDB);
+    }
+  },
+  toggleVisibleMyDB: function() {
+    if (personalMovieDB.privat) {
+        personalMovieDB.privat = false
+    } else {
+        personalMovieDB.privat = true;
+    }
+  },
+  writeYourGenres: () => {
+    for (let i = 1; i <= 3; i++) {
+        let genre = prompt(
+            `Ваш улюблений жанр під номером ${i}`
+          );
 
-// const personalMovieDB = {
-//   count: numberOfFilms,
-//   movies: {},
-//   actors: {},
-//   genres: [],
-//   privat: false,
-// };
+          if (genre == '' || genre == null) {
+            console.log('repeat');
+            i--;
+        } else {
+            personalMovieDB.genres[i - 1] = genre; 
+        }
+    }
+    
+    personalMovieDB.genres.forEach((item, i) => {
+        console.log(`Like genre ${i + 1} - its ${item}`);
+    });
+  }
+};
 
-// function rememberMyFilms() {
-//   for (let i = 0; i < 2; i++) {
-//     const a = prompt("Один з останніх фільмів?", ""),
-//       b = prompt("Оцінка йому?", "");
-
-//     if (a != null && b != null && a != "" && b != "" && a.length < 50) {
-//       personalMovieDB.movies[a] = b;
-//       console.log("done");
-//     } else {
-//       i--;
-//     }
-//   }
-// }
-// rememberMyFilms();
-
-// function detectPersonalLevel() {
-//   if (personalMovieDB.count < 10) {
-//     console.log("beginner");
-//   } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-//     console.log("meddle");
-//   } else if (personalMovieDB.count >= 30) {
-//     console.log("senior");
-//   } else {
-//     console.log("error");
-//   }
-// }
-// detectPersonalLevel();
-
-// function showMyDB(hidden) {
-//   if (!hidden) {
-//     console.log(personalMovieDB);
-//   }
-// }
-
-// showMyDB(personalMovieDB.privat);
-
-// function writeYourGenres() {
-//   for (let i = 1; i <= 3; i++) {
-//     personalMovieDB.genres[i - 1] = prompt(
-//       `Ваш улюблений жанр під номером ${i}`
-//     );
-//   }
-// }
-
-// writeYourGenres();
-
-// console.log(personalMovieDB);
 
 //оператор
 // if (4 == 4) {
@@ -118,7 +123,14 @@
 // }
 
 //Масиви та псевдомасиви
-const arr = [1, 2, 3, 6, 7, 8];
+// const arr = [13, 22, 53, 6, 2, 0];
+// arr.sort(quickSort);
+// console.log(arr);
+
+// function quickSort(a, b) {
+//   return a - b;
+// }
+
 
 // arr.forEach(function(item, i, arr) {
 //   console.log(`${i}: ${item} в середині масиву ${arr}`);
@@ -137,8 +149,9 @@ const arr = [1, 2, 3, 6, 7, 8];
 //   console.log(value);
 // }
 
-const str = prompt('', '');
-const products = str.split(', ');
-// console.log(products);
-products.sort();
-console.log(products.join('; '));
+// const str = prompt('', '');
+// const products = str.split(', ');
+// // console.log(products);
+// products.sort();
+// console.log(products.join('; '));
+
